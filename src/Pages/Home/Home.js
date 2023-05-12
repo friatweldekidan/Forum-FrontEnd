@@ -14,7 +14,7 @@ const Home = () => {
   const Questions = async () => {
     try {
       const questionRes = await axios.get(
-        "http://localhost:4000/api/questions"
+        `${process.env.REACT_APP_base_url}/api/questions`
       );
       setAllQuestions(questionRes.data.data);
     } catch (err) {
@@ -53,11 +53,11 @@ const Home = () => {
               return question;
             } else if (
               question.question.toLowerCase().includes(search.toLowerCase())
-            ){
+            ) {
               return question;
             }
           })
-          
+
           .map((question) => (
             <div key={question.post_id}>
               <hr />
